@@ -1,1 +1,975 @@
-<!DOCTYPE html><html><head><title>Portfolio</title></head><body><h1>Portfolio</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Professional - Minimalist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #FFFFFF;
+            --light-gray: #F8FAFC;
+            --dark-gray: #1E293B;
+            --accent: #3B82F6;
+            --accent-alt: #06B6D4;
+            --light-accent: #DBEAFE;
+            --text-secondary: #64748B;
+            --border: #E2E8F0;
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--white);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark-gray);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .header-nav a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .header-nav a:hover {
+            color: var(--accent);
+        }
+
+        .book-btn {
+            padding: 10px 24px;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .book-btn:hover {
+            background: #1873cc;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 80px 40px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+
+        .hero-content p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--light-accent);
+            padding: 60px 40px;
+        }
+
+        .stats-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--dark-gray);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            padding: 30px;
+            background: var(--light-gray);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            background: var(--light-accent);
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border: 2px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        .timeline-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-gray);
+            margin-bottom: 5px;
+        }
+
+        .timeline-org {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .timeline-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            padding: 30px;
+            background: var(--light-gray);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .testimonial-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--dark-gray);
+            font-size: 14px;
+        }
+
+        .testimonial-role {
+            font-size: 12px;
+            color: var(--accent);
+        }
+
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            background: var(--light-gray);
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--light-accent);
+        }
+
+        .faq-answer {
+            padding: 20px;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .pricing-card {
+            padding: 40px 30px;
+            background: var(--light-gray);
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .pricing-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+        }
+
+        .pricing-price {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .pricing-desc {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+            color: #666;
+        }
+
+        .pricing-btn {
+            padding: 12px 30px;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            width: 100%;
+        }
+
+        .pricing-btn:hover {
+            background: #1873cc;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 60px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .booking-frame-container {
+            margin-top: 40px;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-frame {
+            width: 100%;
+            height: 600px;
+            border: none;
+            display: block;
+        }
+
+        /* Booking iframe wrapper and expand button */
+        .booking-frame-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .booking-expand-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 100;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 3px;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(30, 144, 255, 0.3);
+        }
+
+        .booking-expand-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.5);
+        }
+
+        /* Modal styles for fullscreen iframe */
+        .iframe-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .iframe-modal.active {
+            display: flex;
+        }
+
+        .iframe-modal-content {
+            position: relative;
+            width: 90%;
+            height: 90%;
+            max-width: 1000px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 10px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .iframe-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 2001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .iframe-modal-close:hover {
+            background: #1873cc;
+        }
+
+        .iframe-modal iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer-email {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .footer-email:hover {
+            color: var(--white);
+        }
+
+        .footer-text {
+            font-size: 13px;
+            margin: 10px 0;
+            opacity: 0.8;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 0;
+            }
+
+            .header-nav {
+                gap: 15px;
+            }
+
+            .header-nav a {
+                display: none;
+            }
+
+            .header-nav .book-btn {
+                display: inline-block;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 60px 20px;
+                margin-top: 60px;
+                gap: 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 28px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 25px;
+            }
+
+            .cta-section h2 {
+                font-size: 24px;
+            }
+
+            .booking-frame {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="header-logo">[[[Professional Name]]]</div>
+            <nav class="header-nav">
+                <a href="#services">Services</a>
+                <a href="#experience">Experience</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact" class="book-btn">[[[Book Consultation]]]</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>[[[Welcome to Your Law Practice]]]</h1>
+            <p>[[[Provide clear, expert legal advice to your clients. This clean, professional template is designed to showcase your expertise and services.]]]</p>
+            <a href="#contact" class="book-btn" style="text-decoration: none;">[[[Schedule a Consultation]]]</a>
+        </div>
+        <div class="hero-image">
+            <img src="[[[https://via.placeholder.com/400x400]]]" alt="Professional">
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>[[[15+]]]</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h3>[[[500+]]]</h3>
+                <p>Cases Handled</p>
+            </div>
+            <div class="stat-item">
+                <h3>[[[95%]]]</h3>
+                <p>Success Rate</p>
+            </div>
+            <div class="stat-item">
+                <h3>[[[1000+]]]</h3>
+                <p>Happy Clients</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="section" id="services">
+            <h2 class="section-title">Practice Areas</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3><i class="fas fa-gavel"></i> [[[Service 1]]]</h3>
+                    <p>[[[Description of your first service or practice area. Explain how you can help clients with this specific legal matter.]]]</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-file-contract"></i> [[[Service 2]]]</h3>
+                    <p>[[[Description of your second service or practice area. Highlight your expertise and approach to handling these cases.]]]</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-balance-scale"></i> [[[Service 3]]]</h3>
+                    <p>[[[Description of your third service or practice area. Share what makes your approach unique and effective.]]]</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-briefcase"></i> [[[Service 4]]]</h3>
+                    <p>[[[Description of your fourth service or practice area. Demonstrate your commitment to client success.]]]</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-certificate"></i> [[[Service 5]]]</h3>
+                    <p>[[[Description of your fifth service or practice area. Connect it to your credentials and experience.]]]</p>
+                </div>
+                <div class="service-card">
+                    <h3><i class="fas fa-shield-alt"></i> [[[Service 6]]]</h3>
+                    <p>[[[Description of your sixth service or practice area. Emphasize client protection and your expertise.]]]</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="experience">
+            <h2 class="section-title">Experience & Background</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-title">[[[Position Title 1]]]</div>
+                    <div class="timeline-org">[[[Organization Name]]]</div>
+                    <div class="timeline-date">[[[Date Range]]]</div>
+                    <div class="timeline-desc">[[[Details about your role, achievements, and responsibilities.]]]</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">[[[Position Title 2]]]</div>
+                    <div class="timeline-org">[[[Organization Name]]]</div>
+                    <div class="timeline-date">[[[Date Range]]]</div>
+                    <div class="timeline-desc">[[[Details about your role, achievements, and responsibilities.]]]</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">[[[Position Title 3]]]</div>
+                    <div class="timeline-org">[[[Organization Name]]]</div>
+                    <div class="timeline-date">[[[Date Range]]]</div>
+                    <div class="timeline-desc">[[[Details about your role, achievements, and responsibilities.]]]</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Client Testimonials</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">[[[This is a great place to include positive feedback from your satisfied clients. Share their success stories and how you helped them.]]]</div>
+                    <div class="testimonial-author">[[[Client Name 1]]]</div>
+                    <div class="testimonial-role">[[[Client Title/Company]]]</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">[[[Another testimonial from a happy client. Describe how your legal services made a difference in their situation.]]]</div>
+                    <div class="testimonial-author">[[[Client Name 2]]]</div>
+                    <div class="testimonial-role">[[[Client Title/Company]]]</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">[[[Include testimonials that highlight different aspects of your service, such as professionalism, expertise, and dedication.]]]</div>
+                    <div class="testimonial-author">[[[Client Name 3]]]</div>
+                    <div class="testimonial-role">[[[Client Title/Company]]]</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">[[[More positive feedback from clients can help build trust with potential clients visiting your portfolio.]]]</div>
+                    <div class="testimonial-author">[[[Client Name 4]]]</div>
+                    <div class="testimonial-role">[[[Client Title/Company]]]</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="pricing">
+            <h2 class="section-title">Pricing & Packages</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>[[[Starter]]]</h3>
+                    <div class="pricing-price">[[[$500]]]</div>
+                    <div class="pricing-desc">per matter</div>
+                    <ul class="pricing-features">
+                        <li>✓ [[[Initial consultation]]]</li>
+                        <li>✓ [[[Case assessment]]]</li>
+                        <li>✓ [[[Legal advice]]]</li>
+                        <li>✗ Document preparation</li>
+                        <li>✗ Court representation</li>
+                    </ul>
+                    <button class="pricing-btn">[[[Get Started]]]</button>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>[[[Professional]]]</h3>
+                    <div class="pricing-price">[[[$1500]]]</div>
+                    <div class="pricing-desc">per matter</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> [[[Initial consultation]]]</li>
+                        <li><i class="fas fa-check"></i> [[[Case assessment]]]</li>
+                        <li><i class="fas fa-check"></i> [[[Legal advice]]]</li>
+                        <li><i class="fas fa-check"></i> [[[Document preparation]]]</li>
+                        <li><i class="fas fa-times"></i> Court representation</li>
+                    </ul>
+                    <button class="pricing-btn">[[[Choose Plan]]]</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>[[[Premium]]]</h3>
+                    <div class="pricing-price">[[[$3000+]]]</div>
+                    <div class="pricing-desc">custom pricing</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> [[[Initial consultation]]]</li>
+                        <li><i class="fas fa-check"></i> [[[Case assessment]]]</li>
+                        <li><i class="fas fa-check"></i> [[[Legal advice]]]</li>
+                        <li><i class="fas fa-check"></i> [[[Document preparation]]]</li>
+                        <li><i class="fas fa-check"></i> [[[Court representation]]]</li>
+                    </ul>
+                    <button class="pricing-btn">[[[Contact Us]]]</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>[[[How do I get started with your services?]]]</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">[[[You can schedule a consultation through the booking system below. During our first meeting, we'll discuss your case and provide recommendations.]]]</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>[[[What is your billing structure?]]]</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">[[[We offer various billing options including hourly rates, flat fees, and contingency fees depending on the nature of your case. We'll discuss the best option for your situation.]]]</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>[[[Do you handle cases in other jurisdictions?]]]</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">[[[Yes, we have experience with cases across multiple jurisdictions and can assist with matters requiring multi-state involvement.]]]</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>[[[What should I bring to our first consultation?]]]</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">[[[Please bring any relevant documents related to your case, including contracts, correspondence, and any previous legal documents. This helps us better understand your situation.]]]</div>
+            </div>
+        </section>
+
+        <section class="cta-section" id="contact">
+            <h2>[[[Ready to Get Started?]]]</h2>
+            <p>[[[Schedule your consultation today and let's discuss how we can help with your legal needs.]]]</p>
+            <div class="booking-frame-container">
+                <div class="booking-frame-wrapper">
+                    <button class="booking-expand-btn" onclick="expandBookingFrame(event)" title="Expand to fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                    <iframe id="bookingFrame" src="https://lawglitch.in/booking/client.html?pro_id=c1ba65e8-c552-40c6-8596-f65b631b07a0" class="booking-frame" title="Booking System"></iframe>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <a href="/cdn-cgi/l/email-protection#dcb9b1bdb5b09cb9a4bdb1acb0b9f2bfb3b1" class="footer-email" id="footerEmail">
+            <i class="fas fa-envelope"></i> [[[<span class="__cf_email__" data-cfemail="b1c8dec4c39fd4dcd0d8ddf1d4c9d0dcc1ddd49fd2dedc">[email&#160;protected]</span>]]]
+        </a>
+        <div class="footer-text">&copy; <span id="footerYear"></span> [[[Professional Name]]]</div>
+        <div class="footer-text">Powered by <a href="https://lawglitch.in" target="_blank" style="color: var(--accent);">LawGlitch</a></div>
+    </footer>
+
+    <!-- Fullscreen Booking Modal -->
+    <div class="iframe-modal" id="bookingModal">
+        <div class="iframe-modal-content">
+            <button class="iframe-modal-close" onclick="closeBookingModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <iframe id="bookingModalFrame" src="https://lawglitch.in/booking/client.html?pro_id=c1ba65e8-c552-40c6-8596-f65b631b07a0" title="Booking System"></iframe>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function expandBookingFrame(event) {
+            event.preventDefault();
+            const modal = document.getElementById('bookingModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('bookingModal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeBookingModal();
+                    }
+                });
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBookingModal();
+            }
+        });
+
+        document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const wasActive = faqItem.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+                if (!wasActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Strip markers from text and images
+        (function stripMarkersTemplate() {
+            const MARKER_START = '[' + '[' + '[';
+            const MARKER_END = ']' + ']' + ']';
+            
+            function stripImageMarkers() {
+                document.querySelectorAll('img[src*="' + MARKER_START + '"]').forEach(img => {
+                    const src = img.getAttribute('src');
+                    if (src && src.startsWith(MARKER_START) && src.endsWith(MARKER_END)) {
+                        const cleanedSrc = src.slice(3, -3);
+                        img.setAttribute('src', cleanedSrc);
+                    }
+                });
+            }
+            
+            function stripLinkMarkers() {
+                document.querySelectorAll('a[href*="' + MARKER_START + '"]').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href && href.startsWith(MARKER_START) && href.endsWith(MARKER_END)) {
+                        const cleanedHref = href.slice(3, -3);
+                        link.setAttribute('href', cleanedHref);
+                    }
+                });
+            }
+            
+            function processNode(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    if (node.textContent.includes(MARKER_START)) {
+                        node.textContent = node.textContent.replace(/\[\[\[(.*?)\]\]\]/g, '$1');
+                    }
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    if (node.tagName !== 'SCRIPT' && node.tagName !== 'STYLE') {
+                        Array.from(node.childNodes).forEach(processNode);
+                    }
+                }
+            }
+            
+            processNode(document.body);
+            stripImageMarkers();
+            stripLinkMarkers();
+        })();
+    </script>
+</body>
+</html>
